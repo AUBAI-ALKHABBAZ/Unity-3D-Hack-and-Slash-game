@@ -1,69 +1,64 @@
-# ⚔️ 3D Hack-and-Slash Game (Unity)
+# ⚔️ Unity 3D Hack-and-Slash Game Framework
 
-A robust gameplay programming framework developed in **Unity (C#)** for a 3D Hack-and-Slash action game. This repository showcases core mechanics essential for fast-paced action RPGs, including advanced character control, smooth camera follow logic, combat state management, and grid-based tactical algorithms inspired by classic real-time strategy frameworks.
+[![Unity](https://img.shields.io/badge/Unity-2022.3%2B-black.svg?logo=unity)](https://unity.com/)
+[![C#](https://img.shields.io/badge/C%23-Language-blue.svg?logo=csharp)](https://docs.microsoft.com/en-us/dotnet/csharp/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 🎮 Core Features & Script Architecture
+A modular and clean gameplay programming architecture developed in **Unity (C#)** for a 3D Hack-and-Slash action game. This repository implements core systems essential for action RPG mechanics, including character locomotion, animation-driven combat events, stats management, enemy AI behavior, level control, and UI billboard orientation.
 
-The scripts within this repository form the backbone of the game's loop, emphasizing clean object-oriented design and modularity:
+## 📂 Script Architecture & Component Breakdown
 
-1. **Advanced Character Control Framework:** Implements responsive player locomotion, dash mechanics, and orientation handling tailored for 3D action combat.
-2. **Dynamic Camera Follow System:** Smooth tracking algorithms designed to keep fast-paced combat fluid and focused on the player character without lagging behind rapid movements.
-3. **Combat State Machine:** Manages attack animations, hitboxes, combo chains, and state transitions to ensure responsive and fluid melee combat mechanics.
-4. **RTS Grid & Strategic Algorithms:** Features grid-based utility and path/positional logic (drawing inspiration from classic RTS movement and "Fog of War" grid concepts) adapted for spatial awareness and enemy navigation.
+The project follows a component-based design pattern, separating movement, combat logic, stats, and UI rendering into dedicated modular scripts located in the `scripts/` directory:
 
-## 🛠️ Technology Stack & Requirements
+| Script Name | Core Responsibility |
+| :--- | :--- |
+| **`CharacterMovement.cs`** | Handles 3D player locomotion, input processing, smooth movement vectors, and rotation handling. |
+| **`AnimationEvents.cs`** | Bridges animator states with game logic (e.g., enabling attack hitboxes, triggering combo windows). |
+| **`CharacterStats.cs`** | Manages core RPG attributes such as health points, damage thresholds, and state changes (damage/death). |
+| **`EnemyController.cs`** | Controls enemy state machines, target tracking, detection ranges, and combat engagement logic. |
+| **`LevelManager.cs`** | Oversees game flow, scene transitions, level state checkpoints, and win/lose conditions. |
+| **`UI_LookAt.cs`** | Implements camera-facing (billboarding) behavior for floating health bars and UI elements over entities. |
 
-* **Game Engine:** Unity (Recommended version: 2022.3 LTS or newer)
-* **Programming Language:** C# (.NET Standard / Modern C# features)
-* **Input System:** Unity Input System / Legacy Input (depending on scene configuration)
+## 🛠️ Technology Stack
 
-## 📂 Repository Structure
+* **Game Engine:** Unity (Recommended: 2022.3 LTS or newer)
+* **Programming Language:** C# (.NET Standard)
+* **Architecture Pattern:** Component-Based Architecture / Modular Scripting
 
-```text
-Unity-3D-Hack-and-Slash-game/
-├── scripts/
-│   ├── PlayerController.cs     # Locomotion, inputs, and movement physics
-│   ├── CombatManager.cs        # Attack states, combos, and hit detection
-│   ├── CameraFollow.cs         # Smooth 3D follow camera mechanics
-│   └── RTSGridSystem.cs        # Grid-based mapping and spatial algorithms
-└── README.md                   # Project documentation
+## 🚀 Getting Started & Integration
 
-```
-
-*(Note: Script filenames represent the core architecture modules contained within the repository.)*
-
-## 🚀 Getting Started & Installation
-
-To integrate or review these scripts in your own Unity project:
+To integrate these scripts into your own Unity project:
 
 1. **Clone the Repository:**
-```bash
-git clone https://github.com/AUBAI-ALKHABBAZ/Unity-3D-Hack-and-Slash-game.git
+   `bash
+   git clone [https://github.com/AUBAI-ALKHABBAZ/Unity-3D-Hack-and-Slash-game.git](https://github.com/AUBAI-ALKHABBAZ/Unity-3D-Hack-and-Slash-game.git)
 
-```
 
 
 2. **Open in Unity:**
-* Open **Unity Hub**.
-* Click **Add project from disk** and select the cloned repository folder.
+* Open **Unity Hub**, select **Add project from disk**, and point to the cloned folder.
 
 
-3. **Explore Scripts:**
-* Navigate to the `scripts/` directory to inspect the modular C# components. Attach them to respective GameObjects (Player, Main Camera, Managers) inside a Unity scene configured with appropriate components (CharacterControllers, Colliders).
+3. **Setup Scene Components:**
+* Attach `CharacterMovement` and `CharacterStats` to your Player GameObject (ensure a appropriate character controller setup is present).
+* Attach `EnemyController` and `CharacterStats` to your enemy prefabs.
+* Use `AnimationEvents` directly inside the Unity Animation Window timeline to synchronize melee strikes.
+* Attach `UI_LookAt` to world-space canvas elements (like health bars) to keep them oriented toward the main camera.
+* Place `LevelManager` in your core gameplay scenes to manage state progression.
 
 
 
 ## 🔮 Future Enhancements
 
-* **AI Behavior Trees:** Integrating state-driven enemy AI for aggressive melee combat encounters, patrolling, and flanking maneuvers.
-* **Hit-Stop & Screen Shake Polish:** Adding juice effects like micro-pauses on heavy impacts to dramatically enhance the Hack-and-Slash feel.
-* **Inventory & Equipment Systems:** Scripting modular inventory architecture for weapon swapping and stat modifications.
+* **Combo System Expansion:** Deepening `AnimationEvents` to support multi-stage combo branching.
+* **Behavior Tree AI:** Upgrading `EnemyController` with advanced pathfinding (NavMesh) and tactical evasion maneuvers.
+* **Inventory & Loot System:** Integrating modular item databases for weapon scaling and stats modifications.
 
 ## 👤 Author
 
 **AUBAI ALKHABBAZ**
 
-*Mechatronics & Information Technology Engineer specializing in Machine Learning, Cyber-Physical Systems, and Game Mechanics.*
+*Mechatronics & Information Technology Engineer specializing in Machine Learning, Cyber-Physical Systems, and Game Development.*
 
 _________________________________________________________________________
 <img width="1135" height="635" alt="image" src="https://github.com/user-attachments/assets/83004586-c753-41b5-b6e9-a765ca58ea12" />
